@@ -13,7 +13,7 @@ Je mets en pratique mes compétences sur **Windows Server, Linux et les réseaux
 | Réseau | VLAN, DHCP, DNS, OSPF, EIGRP, ACL, QoS, routage multi-sites, DMZ |
 | Windows Server | Active Directory, GPO, DHCP, DNS, partages NTFS, gestion des utilisateurs et groupes |
 | Linux | Gestion utilisateurs et groupes, permissions, ACL, bit SGID, espaces collaboratifs |
-| Virtualisation | VMware Workstation, VM multi-OS |
+| Virtualisation | VMware Workstation, ESXi, VM multi-OS |
 | Sécurité & Administration | Droits d’accès, redirection dossiers, limitation bureau, gestion centralisée |
 
 ---
