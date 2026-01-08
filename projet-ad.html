@@ -2,46 +2,196 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Documentation Technique - Projet AD</title>
+    <title>Documentation Technique - Projet Infrastructure PME</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --bg: #121212;
+            --card-bg: #1a1a1a;
+            --text: #e0e0e0;
+            --border: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+        }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .back-link { text-decoration: none; color: var(--primary); font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        h1, h2, h3 { color: var(--primary); }
+        h2 { border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-top: 40px; }
+        .box { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        code, pre { background: #000; color: #0f0; padding: 5px 10px; border-radius: 4px; font-family: 'Consolas', monospace; }
+        pre { padding: 15px; overflow-x: auto; border-left: 4px solid var(--primary); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table, th, td { border: 1px solid var(--border); }
+        th, td { padding: 12px; text-align: left; }
+        th { background-color: #252525; }
+        .status-ok { color: var(--primary); font-weight: bold; }
+    </style>
 </head>
-<body style="line-height: 1.6; padding: 40px; color: #fff; background-color: #121212;">
+<body>
 
-    <a href="index.html" style="color: #4CAF50; text-decoration: none;">← Retour au Portfolio</a>
+<div class="container">
+    <a href="index.html" class="back-link">← Retour au Portfolio</a>
 
-    <h1 style="color: #4CAF50; margin-top: 20px;">Documentation Technique : Infrastructure Windows Server 2022</h1>
-    
-    <section style="background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #333;">
-        <h2>1. Présentation du Projet</h2>
-        <p>Ce projet consiste à mettre en place une infrastructure centralisée pour une PME de 100 postes. L'objectif est de sécuriser les accès et de faciliter l'administration via <strong>Active Directory</strong>.</p>
-    </section>
+    <h1>TP : Déploiement d'une Infrastructure Active Directory (Windows Server 2022)</h1>
 
-    <section style="background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #333;">
-        <h2>2. Configuration du Serveur (SRV-AD)</h2>
+    <section class="box">
+        <h2>1. Introduction</h2>
+        <p>Dans une PME de 100 postes, l’objectif est de centraliser la gestion des utilisateurs, des ressources et de la sécurité via un contrôleur de domaine (SRV-AD).</p>
         <ul>
-            <li><strong>Système :</strong> Windows Server 2022 Core / GUI</li>
-            <li><strong>Adresse IP :</strong> 192.168.77.10 /24</li>
-            <li><strong>Rôles installés :</strong> AD DS, DNS, DHCP</li>
+            <li>Domaine : <code>entreprise.local</code></li>
+            <li>IP Serveur : <code>192.168.77.10/24</code></li>
         </ul>
     </section>
 
-    <section style="background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #333;">
-        <h2>3. Services Réseau (DNS & DHCP)</h2>
-        <p>Le service <strong>DHCP</strong> distribue automatiquement les adresses IP (plage .100 à .200). Le <strong>DNS</strong> assure la résolution de noms pour le domaine <em>entreprise.local</em>.</p>
+    <section>
+        <h2>2. Objectifs pédagogiques</h2>
+        <div class="box">
+            <ul>
+                <li>Installation et configuration des rôles <strong>DHCP</strong> et <strong>DNS</strong>.</li>
+                <li>Structuration de l'<strong>Active Directory</strong> (OU, Groupes, Utilisateurs).</li>
+                <li>Gestion des partages réseau et permissions combinées (NTFS + Partage).</li>
+                <li>Déploiement de stratégies de groupe <strong>(GPO)</strong> ciblées.</li>
+            </ul>
+        </div>
     </section>
 
-    <section style="background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #333;">
-        <h2>4. Stratégies de Groupe (GPO) déployées</h2>
-        <ul>
-            <li><strong>GPO Sécurité :</strong> Désactivation du Panneau de configuration pour les utilisateurs.</li>
-            <li><strong>GPO Environnement :</strong> Redirection des dossiers "Documents" sur le serveur pour garantir la sauvegarde des données.</li>
-            <li><strong>GPO Bureau :</strong> Fond d'écran entreprise imposé aux sessions stagiaires.</li>
-        </ul>
+    <section>
+        <h2>3. Configuration & Connectivité</h2>
+        <h3>3.1 Mode Réseau (VMware)</h3>
+        <p>Configuration en mode <strong>Host-only</strong> pour isoler l'infrastructure de test tout en permettant la communication entre le serveur et les clients.</p>
+        
+        <h3>3.2 Adressage IP Fixe du Serveur</h3>
+        <pre>
+IP : 192.168.77.10
+Masque : 255.255.255.0
+Passerelle : 192.168.77.1
+DNS : 192.168.77.10
+        </pre>
     </section>
 
-    <footer style="margin-top: 40px; text-align: center; font-size: 0.9em; color: #888;">
-        Documentation réalisée par Arnaud DHUY – Technicien Systèmes et Réseaux
+    <section>
+        <h2>4. Services DHCP et DNS</h2>
+        <div class="box">
+            <h3>DHCP (Rôle installé)</h3>
+            <p><strong>Étendue :</strong> 192.168.77.100 à 192.168.77.200</p>
+            <p><strong>Réservation :</strong> Imprimante (MAC 00:11:22:33:44:55 → IP 192.168.77.150)</p>
+            
+            <h3>DNS</h3>
+            <p>Vérification de la zone <code>entreprise.local</code> et création d'un enregistrement A pour <code>SRD-AD</code>.</p>
+            <code>nslookup SRD-AD.entreprise.local</code>
+        </div>
+    </section>
+
+    <section>
+        <h2>5. Organisation Active Directory</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Unité d'Organisation (OU)</th>
+                    <th>Utilisateurs</th>
+                    <th>Groupe de Sécurité</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Comptabilité</td>
+                    <td>cdupont, mbernard</td>
+                    <td>G_Comptabilité</td>
+                </tr>
+                <tr>
+                    <td>RH</td>
+                    <td>jdurand, sblanc</td>
+                    <td>G_RH</td>
+                </tr>
+                <tr>
+                    <td>IT</td>
+                    <td>tpetit, lmartin</td>
+                    <td>G_IT</td>
+                </tr>
+                <tr>
+                    <td>Stagiaires</td>
+                    <td>jmartin, apaul</td>
+                    <td>G_Stagiaires</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>6. Gestion des Partages</h2>
+        <p>Mise en place de permissions combinées pour garantir la confidentialité des données :</p>
+        <table>
+            <tr>
+                <th>Dossier</th>
+                <th>Groupe</th>
+                <th>Permission Partage</th>
+                <th>Permission NTFS</th>
+            </tr>
+            <tr>
+                <td>Compta</td>
+                <td>G_Comptabilité</td>
+                <td>Lecture/Écriture</td>
+                <td>Modifier</td>
+            </tr>
+            <tr>
+                <td>RH</td>
+                <td>G_RH</td>
+                <td>Lecture/Écriture</td>
+                <td>Modifier</td>
+            </tr>
+            <tr>
+                <td>Public</td>
+                <td>Tout le monde</td>
+                <td>Lecture</td>
+                <td>Lecture seule</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>7. Stratégies de Groupe (GPO) déployées</h2>
+        <div class="box">
+            <h3>GPO : Comptabilité_Politique</h3>
+            <ul>
+                <li><strong>Restriction :</strong> Interdiction d'accès au Panneau de configuration.</li>
+                <li><strong>Redirection :</strong> Dossier "Documents" redirigé vers <code>\\SRV-AD\Compta\%username%</code>.</li>
+            </ul>
+
+            <h3>GPO : Stagiaires_Politique</h3>
+            <ul>
+                <li><strong>Bureau :</strong> Masquage des icônes "Mes Documents" et "Emplacements Réseau".</li>
+                <li><strong>Personnalisation :</strong> Application forcée du fond d'écran via chemin UNC : <code>\\SRV-AD\Public\wallpaper.jpg</code>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>8. FAQ Technique & Validation</h2>
+        <div class="box">
+            <p><strong>Q : Pourquoi combiner NTFS et Partage ?</strong><br>
+            R : L'accès effectif est toujours la règle la plus restrictive des deux. Cela assure une sécurité maximale lors des accès réseau.</p>
+            
+            <p><strong>Q : Différence entre Groupe de Sécurité et Distribution ?</strong><br>
+            R : Le groupe de sécurité permet d'attribuer des droits (NTFS, GPO), tandis que le groupe de distribution sert uniquement aux listes d'emails.</p>
+        </div>
+    </section>
+
+    <section style="margin-top: 40px; padding: 20px; background: #222; border-radius: 8px;">
+        <h2>Conclusion</h2>
+        <p>Ce TP démontre la capacité à structurer un environnement Windows Server complet, de la couche réseau (DHCP/DNS) à la couche applicative et sécuritaire (AD/GPO), répondant aux besoins réels d'une PME.</p>
+    </section>
+
+    <footer style="text-align: center; margin-top: 40px; color: #666;">
+        © 2024 Arnaud DHUY - Documentation Technique TSSR
     </footer>
+</div>
 
 </body>
 </html>
