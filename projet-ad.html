@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentation Technique - Projet AD</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="line-height: 1.6; padding: 40px; color: #fff; background-color: #121212;">
+
+    <a href="index.html" style="color: #4CAF50; text-decoration: none;">← Retour au Portfolio</a>
+
+    <h1 style="color: #4CAF50; margin-top: 20px;">Documentation Technique : Infrastructure Windows Server 2022</h1>
+    
+    <section style="background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #333;">
+        <h2>1. Présentation du Projet</h2>
+        <p>Ce projet consiste à mettre en place une infrastructure centralisée pour une PME de 100 postes. L'objectif est de sécuriser les accès et de faciliter l'administration via <strong>Active Directory</strong>.</p>
+    </section>
+
+    <section style="background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #333;">
+        <h2>2. Configuration du Serveur (SRV-AD)</h2>
+        <ul>
+            <li><strong>Système :</strong> Windows Server 2022 Core / GUI</li>
+            <li><strong>Adresse IP :</strong> 192.168.77.10 /24</li>
+            <li><strong>Rôles installés :</strong> AD DS, DNS, DHCP</li>
+        </ul>
+    </section>
+
+    <section style="background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #333;">
+        <h2>3. Services Réseau (DNS & DHCP)</h2>
+        <p>Le service <strong>DHCP</strong> distribue automatiquement les adresses IP (plage .100 à .200). Le <strong>DNS</strong> assure la résolution de noms pour le domaine <em>entreprise.local</em>.</p>
+    </section>
+
+    <section style="background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #333;">
+        <h2>4. Stratégies de Groupe (GPO) déployées</h2>
+        <ul>
+            <li><strong>GPO Sécurité :</strong> Désactivation du Panneau de configuration pour les utilisateurs.</li>
+            <li><strong>GPO Environnement :</strong> Redirection des dossiers "Documents" sur le serveur pour garantir la sauvegarde des données.</li>
+            <li><strong>GPO Bureau :</strong> Fond d'écran entreprise imposé aux sessions stagiaires.</li>
+        </ul>
+    </section>
+
+    <footer style="margin-top: 40px; text-align: center; font-size: 0.9em; color: #888;">
+        Documentation réalisée par Arnaud DHUY – Technicien Systèmes et Réseaux
+    </footer>
+
+</body>
+</html>
