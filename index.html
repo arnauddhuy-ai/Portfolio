@@ -2,67 +2,74 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon Portfolio - Arnaud</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <h1>Bienvenue sur mon Portfolio !</h1>
-    <p>Ceci est ma première page hébergée sur GitHub.</p>
-    
-    <section>
-      <h1>Arnaud DHUY – Technicien Systèmes et Réseaux</h1>
-      <p>
-        Diplômé TSSR, je suis passionné par l’administration systèmes,
-        les réseaux et le support informatique.
-      </p>
-    </section>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arnaud DHUY | Portfolio TSSR</title>
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --primary-color: #4CAF50;
+            --text-color: #e0e0e0;
+            --border-color: #333;
+        }
 
-    <section>
-      <h2>Compétences</h2>
-      <ul>
-        <li>Windows Server / Active Directory</li>
-        <li>Linux (Debian)</li>
-        <li>Réseaux : IP, DNS, DHCP</li>
-        <li>Virtualisation (VMware / ESXi)</li>
-        <li>Supervision (PRTG)</li>
-      </ul>
-    </section>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
 
-    <section>
-      <h2>Projets</h2>
+        header {
+            background-color: var(--card-bg);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-      <article style="margin-bottom: 20px;">
-        <h3>Portfolio hébergé sur GitHub Pages</h3>
-        <p>Création d’un portfolio en HTML et mise en ligne avec GitHub Pages.</p>
-      </article>
+        h1 { margin: 0; color: var(--primary-color); font-size: 2.5em; }
+        .subtitle { font-size: 1.2em; color: #888; margin-top: 10px; }
 
-      <hr style="border: 0.5px solid #333; margin: 20px 0;">
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
-      <article style="border: 1px solid #333; padding: 20px; border-radius: 8px; background-color: #1a1a1a; margin-bottom: 20px;">
-    <h3>Projet : Infrastructure Complète PME (Windows Server 2022)</h3>
-    <p><strong>Scénario :</strong> Centralisation de la gestion de 100 postes pour une PME.</p>
-    <ul style="list-style: none; padding-left: 0;">
-        <li style="margin-bottom: 8px;">✔ Installation du contrôleur de domaine (AD DS) et DNS/DHCP.</li>
-        <li style="margin-bottom: 8px;">✔ Gestion des utilisateurs par Unités d'Organisation (RH, IT, Compta).</li>
-        <li style="margin-bottom: 8px;">✔ Sécurisation par GPO (blocage panneau de config, redirection de dossiers).</li>
-        <li style="margin-bottom: 8px;">✔ Gestion fine des droits d'accès (Permissions NTFS et Partages).</li>
-    </ul>
-    <p style="margin-top: 15px; border-top: 1px solid #444; padding-top: 10px;">
-        <small><em>Compétences validées : Administration système, Sécurité, Automatisation.</em></small>
-    </p>
-<a href="projet-ad.html" style="display: inline-block; margin-top: 10px; color: #4CAF50; text-decoration: none; border: 1px solid #4CAF50; padding: 5px 10px; border-radius: 5px;">
-        Voir la documentation technique complète →
-    </a>
+        section { margin-bottom: 40px; }
 
-</article>
+        h2 {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            font-size: 1.4em;
+        }
 
-      <hr style="border: 0.5px solid #333; margin: 20px 0;">
+        article {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
 
-      <article>
-        <h3>Installation Windows Server et Active Directory</h3>
-        <p>Mise en place d’un contrôleur de domaine, utilisateurs et groupes.</p>
-      </article>
-    </section>
+        article:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
 
-</body>
-</html>
+        h3 { margin-top: 0; color: var(--primary-color); }
+
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 10px; }
+
+        .btn-doc {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            border: 1px solid var(--primary-color);
+            padding: 10px 20
