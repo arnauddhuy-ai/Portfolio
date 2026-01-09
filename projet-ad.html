@@ -3,190 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation Technique Détaillée - Projet AD</title>
+    <title>Projet AD & Infrastructure PME | Arnaud DHUY</title>
     <style>
-        :root { --primary: #4CAF50; --bg: #0f0f0f; --card: #1a1a1a; --text: #e0e0e0; --accent: #81c784; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; color: var(--text); background-color: var(--bg); margin: 0; padding: 20px; }
-        .container { max-width: 1000px; margin: auto; background: var(--card); padding: 40px; border-radius: 8px; border: 1px solid #333; }
-        h1, h2, h3, h4 { color: var(--primary); }
-        h1 { border-bottom: 3px solid var(--primary); padding-bottom: 10px; text-align: center; text-transform: uppercase; }
-        h2 { margin-top: 40px; border-bottom: 1px solid #444; padding-bottom: 10px; font-size: 1.8em; }
-        h3 { margin-top: 25px; color: var(--accent); border-left: 4px solid var(--primary); padding-left: 15px; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #222; }
-        th, td { border: 1px solid #444; padding: 12px; text-align: left; }
-        th { background: #333; }
-        aside { background: #000; color: #00ff00; padding: 15px; border-left: 4px solid var(--primary); margin: 15px 0; border-radius: 4px; font-family: 'Consolas', monospace; font-size: 0.95em; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: var(--primary); text-decoration: none; font-weight: bold; border: 1px solid var(--primary); padding: 8px 15px; border-radius: 5px; }
-        .back-link:hover { background: var(--primary); color: #fff; }
-        .tip { background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; padding: 15px; margin: 15px 0; border-radius: 4px; }
-        ul, ol { margin-bottom: 20px; }
-        li { margin-bottom: 8px; }
-        strong { color: #fff; }
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --text-color: #e0e0e0;
+            --border-color: #333;
+            --code-bg: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        h1 { color: var(--primary-color); margin: 0; }
+        h2 { color: var(--secondary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-top: 40px; }
+        h3 { color: var(--primary-color); }
+
+        .grid-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .badge {
+            background: var(--primary-color);
+            color: black;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--card-bg);
+        }
+
+        table, th, td { border: 1px solid var(--border-color); }
+        th, td { padding: 12px; text-align: left; }
+        th { background: #252525; color: var(--primary-color); }
+
+        .command {
+            background: var(--code-bg);
+            padding: 15px;
+            border-left: 4px solid var(--secondary-color);
+            font-family: 'Courier New', monospace;
+            display: block;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .btn-back {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .step-box {
+            border-left: 3px solid var(--primary-color);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
 
+<header>
+    <div class="container">
+        <a href="index.html" class="btn-back">← Retour au portfolio</a>
+        <h1>Infrastructure Active Directory & Services Réseaux</h1>
+        <p>Déploiement complet Windows Server 2022 pour une PME de 100 postes</p>
+    </div>
+</header>
+
 <div class="container">
-    <a href="index.html" class="back-link">← Retour au Portfolio</a>
-
-    <h1>TP : Centralisation et Sécurisation d'une Infrastructure PME</h1>
-
+    
     <section>
-        <h2>1. Introduction</h2>
-        <p>Dans une PME de 100 postes, l’entreprise souhaite centraliser la gestion des utilisateurs, des ressources et de la sécurité via un serveur <strong>Windows Server 2022</strong> configuré en contrôleur de domaine.</p>
-        <p><strong>Ce TP vous permettra de :</strong></p>
-        <ul>
-            <li>Compléter et configurer l’infrastructure Active Directory existante</li>
-            <li>Déployer et tester DHCP et DNS</li>
-            <li>Organiser les OU et groupes de sécurité</li>
-            <li>Créer des partages réseau avec permissions combinées (NTFS + partage)</li>
-            <li>Appliquer des GPO pour sécuriser et personnaliser les postes clients</li>
-            <li>Vérifier et valider toute l’infrastructure</li>
-        </ul>
-        <p><strong>Serveur de référence :</strong> SRV-AD | <strong>Domaine :</strong> entreprise.local | <strong>IP :</strong> 192.168.77.10/24</p>
-    </section>
-
-    <section>
-        <h2>2. Objectifs pédagogiques</h2>
-        <p>Après ce TP, vous serez capable de :</p>
-        <ul>
-            <li>Vérifier et configurer la connectivité réseau des serveurs et postes clients</li>
-            <li>Installer et configurer les rôles DHCP et DNS sur Windows Server 2022</li>
-            <li>Organiser et structurer un domaine Active Directory avec OU, utilisateurs et groupes de sécurité</li>
-            <li>Créer des partages réseau avec permissions combinées NTFS et partage</li>
-            <li>Appliquer des GPO ciblées pour sécuriser et personnaliser les postes clients</li>
-            <li>Tester et valider le fonctionnement des services et des politiques appliquées</li>
-            <li>Comprendre l’importance de la centralisation et de la sécurité dans une infrastructure d’entreprise</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>3. Vérification de la configuration réseau de la VM</h2>
-        <h3>3.1 Dans VMware</h3>
-        <p>Sélectionnez votre VM Windows Server (SRV-AD) > Menu : <strong>VM > Settings > Network Adapter</strong>.</p>
-        <table>
-            <tr><th>Mode</th><th>Usage pour le TP</th></tr>
-            <tr><td>Bridged</td><td>VM sur le réseau physique réel</td></tr>
-            <tr><td>NAT</td><td>VM partage l’IP de l’hôte pour Internet</td></tr>
-            <tr><td><strong>Host-only</strong></td><td><strong>VM isolée mais communique avec hôte et autres VMs (Choix TP)</strong></td></tr>
-        </table>
-
-        <h3>3.2 Vérification réseau côté serveur</h3>
-        <p>CMD :</p>
-        <aside>ipconfig /all</aside>
-        <p>Vérifiez que le serveur utilise son IP comme DNS (192.168.77.10).</p>
-    </section>
-
-    <section>
-        <h2>4. Configuration de l’adresse IP fixe du serveur</h2>
-        <ul>
-            <li><strong>IP :</strong> 192.168.77.10</li>
-            <li><strong>Masque :</strong> 255.255.255.0</li>
-            <li><strong>Passerelle :</strong> 192.168.77.1 (fictive en host-only)</li>
-            <li><strong>DNS :</strong> 192.168.77.10</li>
-        </ul>
-        <p>Vérification CMD :</p>
-        <aside>ipconfig /all<br>ping 192.168.77.10</aside>
-        <div class="tip"><strong>Astuce :</strong> Tester la connectivité avec un poste client avant de continuer.</div>
-    </section>
-
-    <section>
-        <h2>5. Installation et configuration du rôle DHCP</h2>
-        <h3>5.1 Installation du rôle</h3>
-        <p>Gestionnaire de serveur > Ajouter rôles et fonctionnalités > DHCP Server > Installer. Autorisez DHCP dans Active Directory.</p>
-
-        <h3>5.2 Création de l’étendue DHCP</h3>
-        <p>IPv4 > Nouvelle étendue :</p>
-        <ul>
-            <li><strong>Nom :</strong> Etendue_VM</li>
-            <li><strong>Plage IP :</strong> 192.168.77.100 → 192.168.77.200</li>
-            <li><strong>Masque :</strong> 255.255.255.0</li>
-            <li><strong>Passerelle (003) :</strong> 192.168.77.1</li>
-            <li><strong>DNS préféré (006) :</strong> 192.168.77.10</li>
-        </ul>
-
-        <h3>5.3 Réservation DHCP</h3>
-        <p>MAC : <code>00:11:22:33:44:55</code> | IP réservée : <strong>192.168.77.150</strong></p>
-
-        <h3>5.4 Vérification côté client</h3>
-        <aside>ipconfig /release<br>ipconfig /renew<br>ipconfig /all<br>ping 192.168.77.10</aside>
-    </section>
-
-    <section>
-        <h2>6. Configuration DNS</h2>
-        <h3>6.1 Création d’un enregistrement A</h3>
-        <p>Zone entreprise.local > Nouvel hôte (A) : Nom <strong>SRD-AD</strong> | IP <strong>192.168.77.20</strong></p>
-        <aside>nslookup SRD-AD.entreprise.local</aside>
-    </section>
-
-    <section>
-        <h2>7. Organisation Active Directory</h2>
-        <h3>7.1 Création des OU, Utilisateurs et Groupes</h3>
-        <table>
-            <tr><th>OU</th><th>Utilisateurs</th><th>Groupes de sécurité</th></tr>
-            <tr><td>Comptabilité</td><td>cdupont, mbernard</td><td>G_Comptabilité</td></tr>
-            <tr><td>RH</td><td>jdurand, sblanc</td><td>G_RH</td></tr>
-            <tr><td>IT</td><td>tpetit, lmartin</td><td>G_IT</td></tr>
-            <tr><td>Stagiaires</td><td>jmartin, apaul</td><td>G_Stagiaires</td></tr>
-        </table>
-    </section>
-
-    <section>
-        <h2>8. Stratégies de groupe (GPO)</h2>
-        <h3>8.1 Intégration Client au Domaine</h3>
-        <p>Propriétés système > Modifier > Domaine > <strong>entreprise.local</strong>.</p>
-        <aside>whoami</aside>
-
-        <h3>8.2 Création des dossiers partagés et Permissions</h3>
-        <p>Emplacements : <code>C:\Partages\Compta</code>, <code>C:\Partages\RH</code>, <code>C:\Partages\Public</code></p>
-        <h4>8.2.1 Permissions NTFS</h4>
-        <table>
-            <tr><th>Dossier</th><th>Groupe</th><th>Permissions NTFS</th></tr>
-            <tr><td>Compta</td><td>G_Comptabilité</td><td>Modifier / Contrôle total</td></tr>
-            <tr><td>RH</td><td>G_RH</td><td>Modifier</td></tr>
-            <tr><td>Public</td><td>G_IT</td><td>Modifier</td></tr>
-            <tr><td>Public</td><td>Tout le monde</td><td>Lecture seule</td></tr>
-        </table>
-
-        <h3>8.3 GPO Comptabilité_Politique</h3>
-        <ul>
-            <li><strong>Panneau de configuration :</strong> Activé (Interdire l'accès).</li>
-            <li><strong>Redirection Documents :</strong> De base vers <code>\\SRV-AD\Compta</code> (créer un dossier pour chaque utilisateur).</li>
-        </ul>
-
-        <h3>8.4 GPO Stagiaires_Politique</h3>
-        <ul>
-            <li><strong>Bureau :</strong> Masquer "Mes documents", "Internet Explorer", "Emplacements réseau".</li>
-            <li><strong>Fond d'écran :</strong> Activer avec chemin <code>\\SRV-AD\Public\wallpaper_ok.jpg</code>.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>9. Dépannage Rapide</h2>
-        <ul>
-            <li><strong>GPO non appliquée :</strong> vérifiez <code>gpresult /r</code>, DNS client, liaison GPO.</li>
-            <li><strong>Redirection non créée :</strong> vérifiez droits NTFS & partage.</li>
-            <li><strong>Fond d'écran :</strong> vérifiez chemin UNC accessible.</li>
-        </ul>
-        <aside>reg query "HKCU\Control Panel\Desktop" /v Wallpaper</aside>
-    </section>
-
-    <section>
-        <h2>10. Questions de validation</h2>
-        <div class="tip">
-            <p><strong>Différence groupe Sécurité / Distribution :</strong> Sécurité pour les droits d'accès, Distribution pour les listes d'emails.</p>
-            <p><strong>NTFS vs Partage :</strong> NTFS s'applique localement et réseau, Partage uniquement réseau. Le plus restrictif gagne.</p>
-            <p><strong>Priorité GPO :</strong> LSDOU (Local, Site, Domaine, Unité d'Organisation).</p>
+        <h2>1. Présentation du Projet</h2>
+        <p>L'objectif est de centraliser la gestion des utilisateurs et de sécuriser les ressources d'une PME via un contrôleur de domaine Windows Server 2022.</p>
+        <div class="grid-info">
+            <div>
+                <strong>Serveur de référence :</strong> SRV-AD<br>
+                <strong>Domaine :</strong> entreprise.local
+            </div>
+            <div>
+                <strong>IP Statique :</strong> 192.168.77.10/24<br>
+                <strong>DNS :</strong> 127.0.0.1 (Bouclage AD)
+            </div>
         </div>
     </section>
 
-    <h2>Conclusion</h2>
-    <p>Ce TP a permis de mettre en place une infrastructure Windows Server 2022 complète pour une PME, en centralisant la gestion des utilisateurs, des ressources et de la sécurité.</p>
+    <section>
+        <h2>2. Services Réseaux (DHCP & DNS)</h2>
+        <div class="step-box">
+            <h3>Configuration DHCP</h3>
+            <p>Mise en place d'une étendue pour l'attribution dynamique des IP aux 100 postes clients.</p>
+            <ul>
+                <li><strong>Plage :</strong> 192.168.77.100 à 192.168.77.200</li>
+                <li><strong>Option 003 (Passerelle) :</strong> 192.168.77.1</li>
+                <li><strong>Option 006 (DNS) :</strong> 192.168.77.10</li>
+            </ul>
+            <span class="command">ipconfig /renew (Test côté client)</span>
+        </div>
 
-    <footer style="text-align: center; margin-top: 50px; color: #666; border-top: 1px solid #333; padding-top: 20px;">
-        Documentation Technique TSSR - Arnaud DHUY - 2026
-    </footer>
+        <div class="step-box">
+            <h3>Configuration DNS</h3>
+            <p>Création d'enregistrements hôtes (A) pour la résolution de noms interne.</p>
+            <span class="command">nslookup SRV-AD.entreprise.local</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>3. Structure Active Directory</h2>
+        <p>Organisation des Unités d'Organisation (OU) et des groupes pour une gestion granulaire.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Unité d'Organisation (OU)</th>
+                    <th>Groupes de Sécurité</th>
+                    <th>Utilisateurs (Exemples)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Comptabilité</td>
+                    <td>G_Comptabilité</td>
+                    <td>cdupont, mbernard</td>
+                </tr>
+                <tr>
+                    <td>RH</td>
+                    <td>G_RH</td>
+                    <td>jdurand, sblanc</td>
+                </tr>
+                <tr>
+                    <td>IT</td>
+                    <td>G_IT</td>
+                    <td>tpetit, lmartin</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>4. Stratégies de Groupes (GPO) & Sécurité</h2>
+        <p>Application de politiques restrictives et de personnalisation de l'environnement.</p>
+        
+        <h3>GPO : Comptabilité_Politique</h3>
+        <ul>
+            <li><strong>Restriction :</strong> Interdiction totale d'accès au Panneau de Configuration.</li>
+            <li><strong>Optimisation :</strong> Redirection du dossier "Documents" vers le serveur : <code class="badge">\\SRV-AD\Compta\%username%</code></li>
+        </ul>
+
+        <h3>GPO : Stagiaires_Politique</h3>
+        <ul>
+            <li><strong>Bureau :</strong> Masquage des icônes (Réseau, Documents) pour limiter les erreurs.</li>
+            <li><strong>Identité visuelle :</strong> Application forcée d'un fond d'écran d'entreprise via partage UNC.</li>
+        </ul>
+        <span class="command">gpresult /r (Vérification de l'application des GPO)</span>
+    </section>
+
+    <section>
+        <h2>5. Gestion des Partages & NTFS</h2>
+        <p>Mise en place de la méthode <strong>AGDLP</strong> pour la gestion des droits.</p>
+        <table>
+            <tr>
+                <th>Dossier</th>
+                <th>Permissions de Partage</th>
+                <th>Permissions NTFS</th>
+            </tr>
+            <tr>
+                <td>C:\Partages\Compta</td>
+                <td>G_Comptabilité (L/E)</td>
+                <td>G_Comptabilité (Modifier)</td>
+            </tr>
+            <tr>
+                <td>C:\Partages\Public</td>
+                <td>Tout le monde (Lecture)</td>
+                <td>G_IT (Modifier) / Tous (Lecture)</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Conclusion du TP</h2>
+        <p>Ce projet démontre ma capacité à concevoir et administrer une infrastructure Microsoft complète, de la couche réseau (DHCP/DNS) à la couche applicative et sécuritaire (AD/GPO).</p>
+    </section>
+
 </div>
+
+<footer style="text-align: center; padding: 40px; color: #666; border-top: 1px solid var(--border-color); margin-top: 40px;">
+    &copy; 2024 Arnaud DHUY - Portfolio TSSR
+</footer>
 
 </body>
 </html>

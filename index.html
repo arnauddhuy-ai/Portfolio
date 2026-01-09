@@ -72,4 +72,75 @@
             color: var(--primary-color);
             text-decoration: none;
             border: 1px solid var(--primary-color);
-            padding: 10px 20
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-doc:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-color);
+        }
+
+        strong { color: #fff; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Arnaud DHUY</h1>
+        <p class="subtitle">Technicien Supérieur Systèmes et Réseaux (TSSR)</p>
+    </header>
+
+    <div class="container">
+
+        <section id="a-propos">
+            <h2>À propos</h2>
+            <p>Passionné par les infrastructures réseaux et l'administration système, je me spécialise dans le déploiement de solutions Microsoft Server et la sécurisation des parcs informatiques.</p>
+        </section>
+
+        <section id="projets">
+            <h2>Projets Majeurs</h2>
+
+            <article>
+                <h3>Infrastructure Complète PME (Windows Server 2022)</h3>
+                <p><strong>Scénario :</strong> Centralisation de la gestion de 100 postes pour une PME en pleine croissance.</p>
+                
+                <ul>
+                    <li>✔ Installation du contrôleur de domaine <strong>(AD DS)</strong> et services <strong>DNS/DHCP</strong>.</li>
+                    <li>✔ Organisation des <strong>Unités d'Organisation</strong> et groupes de sécurité.</li>
+                    <li>✔ Sécurisation par <strong>GPO</strong> (restrictions Bureau et Panneau de config).</li>
+                    <li>✔ Gestion des accès via <strong>Permissions NTFS</strong> et partages réseau.</li>
+                </ul>
+
+                <p><em>Compétences : Administration Windows, Sécurité, Réseaux.</em></p>
+
+                <a href="projet-ad.html" class="btn-doc">
+                    Voir la documentation technique complète →
+                </a>
+            </article>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email : <strong>arnaud.dhuy@exemple.com</strong></p>
+            <p>LinkedIn : <strong>linkedin.com/in/arnauddhuy</strong></p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Arnaud DHUY - Réalisé dans le cadre de la formation TSSR</p>
+    </footer>
+
+</body>
+</html>
