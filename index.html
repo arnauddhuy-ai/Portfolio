@@ -1,145 +1,248 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnaud DHUY | Portfolio TSSR</title>
     <style>
+        /* Variables de couleurs pour un thème Dark Tech */
         :root {
-            --bg-color: #0f0f0f;
-            --card-bg: #1a1a1a;
-            --primary-color: #4CAF50;
-            --text-color: #e0e0e0;
-            --border-color: #333;
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --primary-color: #238636; /* Vert GitHub */
+            --secondary-color: #2f81f7; /* Bleu tech */
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --border-color: #30363d;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             line-height: 1.6;
             margin: 0;
             padding: 0;
         }
 
-        header {
-            background-color: var(--card-bg);
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        h1 { margin: 0; color: var(--primary-color); font-size: 2.5em; }
-        .subtitle { font-size: 1.2em; color: #888; margin-top: 10px; }
-
         .container {
             max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        section { margin-bottom: 40px; }
+        /* Header / Section Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
 
-        h2 {
-            border-left: 4px solid var(--primary-color);
-            padding-left: 15px;
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 10px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 20px auto;
+            color: var(--text-dim);
+        }
+
+        .links {
+            margin-top: 25px;
+        }
+
+        .links a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: #21262d;
+            transition: 0.3s;
+        }
+
+        .links a:hover {
+            background-color: var(--border-color);
+            border-color: var(--text-dim);
+        }
+
+        /* Section Compétences */
+        #skills {
+            margin-bottom: 50px;
+        }
+
+        #skills h2 {
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 5px;
             margin-bottom: 25px;
-            text-transform: uppercase;
-            font-size: 1.4em;
+        }
+
+        #skills ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 0;
+            list-style: none;
+        }
+
+        #skills li {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            padding-left: 40px;
+        }
+
+        #skills li::before {
+            content: "✔";
+            color: var(--primary-color);
+            position: absolute;
+            left: 15px;
+            font-weight: bold;
+        }
+
+        /* Section Projets */
+        #projects h2 {
+            margin-bottom: 30px;
         }
 
         article {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 25px;
             border-radius: 10px;
-            transition: transform 0.3s ease;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
         article:hover {
             transform: translateY(-5px);
-            border-color: var(--primary-color);
+            border-color: var(--secondary-color);
         }
 
-        h3 { margin-top: 0; color: var(--primary-color); }
+        article h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
 
-        ul { list-style: none; padding: 0; }
-        li { margin-bottom: 10px; }
+        article p {
+            color: var(--text-dim);
+        }
 
-        .btn-doc {
+        .btn-github {
             display: inline-block;
-            margin-top: 20px;
-            color: var(--primary-color);
+            margin-top: 15px;
+            color: var(--secondary-color);
             text-decoration: none;
-            border: 1px solid var(--primary-color);
-            padding: 10px 20px;
-            border-radius: 5px;
             font-weight: bold;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
-        .btn-doc:hover {
-            background-color: var(--primary-color);
-            color: #fff;
+        .btn-github:hover {
+            text-decoration: underline;
         }
 
         footer {
             text-align: center;
             padding: 40px;
-            color: #666;
-            font-size: 0.9em;
-            border-top: 1px solid var(--border-color);
+            color: var(--text-dim);
+            font-size: 0.8rem;
         }
 
-        strong { color: #fff; }
+        /* Mobile */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .grid-skills { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Arnaud DHUY</h1>
-        <p class="subtitle">Technicien Supérieur Systèmes et Réseaux (TSSR)</p>
+    <header class="hero">
+        <div class="container">
+            <h1>Arnaud DHUY</h1>
+             <h2>Technicien Systèmes et Réseaux</h2>
+            <p>
+                Technicien systèmes et réseaux junior, passionné par l’administration Windows Server, Linux et la gestion des infrastructures réseau.
+                Je conçois, déploie et documente des solutions
+                sécurisées et évolutives pour les PME.
+            </p>
+            <div class="links">
+                <a href="https://github.com/arnauddhuy-ai" target="_blank">Mon GitHub</a>
+                <a href="mailto:ton-email@exemple.com">Me Contacter</a>
+            </div>
+        </div>
     </header>
 
     <div class="container">
-
-        <section id="a-propos">
-            <h2>À propos</h2>
-            <p>Passionné par les infrastructures réseaux et l'administration système, je me spécialise dans le déploiement de solutions Microsoft Server et la sécurisation des parcs informatiques.</p>
+        
+        <section id="skills">
+            <h2>Compétences clés</h2>
+            <ul>
+                <li><strong>Windows Server 2022</strong> – AD, GPO, DNS, DHCP</li>
+                <li><strong>Linux (Debian/Ubuntu)</strong> – Utilisateurs, ACL</li>
+                <li><strong>Réseaux</strong> – Adressage IP, VLAN, Routage</li>
+                <li><strong>Virtualisation</strong> – VMware Workstation, ESXi</li>
+                <li><strong>Sécurité</strong> – Segmentation, Droits d'accès</li>
+            </ul>
         </section>
 
-        <section id="projets">
-            <h2>Projets Majeurs</h2>
+        <section id="projects">
+            <h2>Projets Réalisés</h2>
 
             <article>
-                <h3>Infrastructure Complète PME (Windows Server 2022)</h3>
-                <p><strong>Scénario :</strong> Centralisation de la gestion de 100 postes pour une PME en pleine croissance.</p>
-                
-                <ul>
-                    <li>✔ Installation du contrôleur de domaine <strong>(AD DS)</strong> et services <strong>DNS/DHCP</strong>.</li>
-                    <li>✔ Organisation des <strong>Unités d'Organisation</strong> et groupes de sécurité.</li>
-                    <li>✔ Sécurisation par <strong>GPO</strong> (restrictions Bureau et Panneau de config).</li>
-                    <li>✔ Gestion des accès via <strong>Permissions NTFS</strong> et partages réseau.</li>
-                </ul>
-
-                <p><em>Compétences : Administration Windows, Sécurité, Réseaux.</em></p>
-
-                <a href="projet-ad.html" class="btn-doc">
-                    Voir la documentation technique complète →
+                <h3>Infrastructure PME – Windows Server 2022</h3>
+                <p>
+                    Mise en place d’un environnement Active Directory pour 100 utilisateurs :
+                    gestion centralisée, GPO, partages réseau et sécurité.
+                </p>
+                <a href="https://github.com/arnauddhuy-ai/windows-server-2022-ad" class="btn-github" target="_blank">
+                    Voir la documentation technique →
                 </a>
             </article>
-        </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email : <strong>arnaud.dhuy@gmail.com</strong></p>
-            <p>LinkedIn : <strong>linkedin.com/in/arnauddhuy</strong></p>
+            <article>
+                <h3>Espace collaboratif Linux multi-groupes</h3>
+                <p>
+                    Création d’un espace de travail sécurisé sous Linux avec gestion fine
+                    des permissions, ACL et héritage des droits.
+                </p>
+                <a href="https://github.com/arnauddhuy-ai/linux-espace-collaboratif" class="btn-github" target="_blank">
+                    Voir la documentation technique →
+                </a>
+            </article>
+
+            <article>
+                <h3>Infrastructure réseau multi-sites</h3>
+                <p>
+                    Conception d’un réseau d’entreprise segmenté avec VLAN,
+                    routage dynamique et sécurisation des flux via Cisco.
+                </p>
+                <a href="https://github.com/arnauddhuy-ai/infrastructure-reseau-multisite" class="btn-github" target="_blank">
+                    Voir la documentation technique →
+                </a>
+            </article>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Arnaud DHUY - Réalisé dans le cadre de la formation TSSR</p>
+        &copy; 2026 Arnaud DHUY - Réalisé avec HTML/CSS
     </footer>
 
 </body>
