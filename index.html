@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnaud DHUY | Portfolio TSSR</title>
     <style>
-        /* Variables de couleurs Tech & Dark Mode */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --bg-color: #0d1117;
             --card-bg: #161b22;
-            --primary-color: #238636; /* Vert GitHub */
-            --secondary-color: #2f81f7; /* Bleu tech */
+            --primary-color: #238636;
+            --secondary-color: #2f81f7;
             --text-main: #c9d1d9;
             --text-dim: #8b949e;
             --border-color: #30363d;
@@ -21,8 +26,6 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
         }
 
         .container {
@@ -31,7 +34,6 @@
             padding: 20px;
         }
 
-        /* Header / Section Hero */
         .hero {
             text-align: center;
             padding: 60px 20px;
@@ -42,14 +44,14 @@
 
         .hero h1 {
             font-size: 3rem;
-            margin: 0;
+            margin: 0 0 10px 0;
             color: white;
         }
 
         .hero h2 {
             font-size: 1.5rem;
             color: var(--primary-color);
-            margin-top: 10px;
+            margin: 10px 0 20px 0;
         }
 
         .hero p {
@@ -72,43 +74,49 @@
             border: 1px solid var(--border-color);
             border-radius: 6px;
             background-color: #21262d;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             font-weight: bold;
         }
 
         .links a:hover {
             background-color: var(--border-color);
             border-color: var(--text-dim);
+            transform: translateY(-2px);
         }
 
-        /* Section Compétences */
         #skills {
             margin-bottom: 50px;
         }
 
-        #skills h2 {
+        #skills h2, #projects h2 {
             border-bottom: 3px solid var(--primary-color);
             display: inline-block;
             padding-bottom: 5px;
             margin-bottom: 25px;
             color: white;
+            font-size: 1.8rem;
         }
 
         #skills ul {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
-            padding: 0;
             list-style: none;
+            padding: 0;
         }
 
         #skills li {
             background: var(--card-bg);
-            padding: 15px;
+            padding: 15px 15px 15px 40px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             position: relative;
-            padding-left: 40px;
+            transition: all 0.3s ease;
+        }
+
+        #skills li:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
         }
 
         #skills li::before {
@@ -116,16 +124,13 @@
             color: var(--primary-color);
             position: absolute;
             left: 15px;
+            top: 15px;
             font-weight: bold;
+            font-size: 1.2rem;
         }
 
-        /* Section Projets */
-        #projects h2 {
-            margin-bottom: 35px;
-            display: inline-block;
-            border-bottom: 3px solid var(--primary-color); /* Soulignement Vert */
-            padding-bottom: 5px;
-            color: white;
+        #projects {
+            margin-bottom: 50px;
         }
 
         article {
@@ -134,27 +139,27 @@
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 25px;
-            transition: transform 0.2s, border-color 0.2s;
+            transition: all 0.3s ease;
         }
 
         article:hover {
             transform: translateY(-5px);
             border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(35, 134, 54, 0.2);
         }
 
-        /* Titres de projets en BLANC */
         article h3 {
-            margin-top: 0;
-            color: #ffffff; /* Modification : Blanc pur */
+            margin: 0 0 15px 0;
+            color: white;
             font-size: 1.4rem;
         }
 
         article p {
             color: var(--text-dim);
             margin-bottom: 20px;
+            line-height: 1.6;
         }
 
-        /* Boutons de documentation en VERT */
         .btn-github {
             display: inline-block;
             color: var(--primary-color);
@@ -164,55 +169,110 @@
             border: 1px solid var(--primary-color);
             padding: 10px 20px;
             border-radius: 6px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .btn-github:hover {
             background-color: var(--primary-color);
             color: white;
+            transform: translateX(5px);
         }
 
         footer {
             text-align: center;
-            padding: 60px;
+            padding: 40px 20px;
             color: var(--text-dim);
             font-size: 0.85rem;
             border-top: 1px solid var(--border-color);
             margin-top: 40px;
         }
 
-        /* Responsive */
         @media (max-width: 600px) {
-            .hero h1 { font-size: 2.2rem; }
-            .links a { display: block; margin: 10px 0; }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .links a {
+                display: block;
+                margin: 10px auto;
+                max-width: 200px;
+            }
+
+            #skills ul {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
     <header class="hero">
         <div class="container">
             <h1>Arnaud DHUY</h1>
             <h2>Technicien Systèmes et Réseaux</h2>
             <p>
-                Technicien systèmes et réseaux junior, passionné par
-                l'infrastructure IT, la sécurité et la gestion des environnements
-                Windows et Linux. Je conçois, déploie et documente des solutions
-                sécurisées et évolutives pour les PME.
+                Technicien systèmes et réseaux junior, passionné par l'infrastructure IT, 
+                la sécurité et la gestion des environnements Windows et Linux. Je conçois, 
+                déploie et documente des solutions sécurisées et évolutives pour les PME.
             </p>
             <div class="links">
                 <a href="https://github.com/arnauddhuy-ai" target="_blank">Mon GitHub</a>
-                <a href="mailto:ton-email@exemple.com">Me Contacter</a>
+                <a href="mailto:arnaud.dhuy@exemple.com">Me Contacter</a>
             </div>
         </div>
     </header>
 
     <div class="container">
-        
         <section id="skills">
             <h2>Compétences clés</h2>
             <ul>
                 <li><strong>Windows Server 2022</strong> – AD, GPO, DNS, DHCP</li>
                 <li><strong>Linux (Debian/Ubuntu)</strong> – Gestion utilisateurs, ACL</li>
                 <li><strong>Réseaux</strong> – Adressage IP, VLAN, Routage Cisco</li>
-                <li><stron
+                <li><strong>Virtualisation</strong> – VMware Workstation, ESXi</li>
+                <li><strong>Sécurité</strong> – Segmentation, Gestion des droits</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projets Réalisés</h2>
+
+            <article>
+                <h3>Infrastructure PME – Windows Server 2022</h3>
+                <p>
+                    Mise en place d'un environnement Active Directory complet pour 100 utilisateurs :
+                    gestion centralisée, stratégies de groupe (GPO), partages réseau sécurisés.
+                </p>
+                <a href="https://github.com/arnauddhuy-ai/windows-server-2022-ad" class="btn-github" target="_blank">
+                    Voir la documentation technique →
+                </a>
+            </article>
+
+            <article>
+                <h3>Espace collaboratif Linux multi-groupes</h3>
+                <p>
+                    Déploiement d'un serveur de fichiers Linux avec gestion fine des permissions, 
+                    mise en place d'ACL et héritage des droits pour différents services.
+                </p>
+                <a href="https://github.com/arnauddhuy-ai/linux-espace-collaboratif" class="btn-github" target="_blank">
+                    Voir la documentation technique →
+                </a>
+            </article>
+
+            <article>
+                <h3>Infrastructure réseau multi-sites</h3>
+                <p>
+                    Conception et simulation d'un réseau segmenté via VLAN, mise en œuvre 
+                    du routage inter-VLAN et sécurisation des flux (ACL).
+                </p>
+                <a href="https://github.com/arnauddhuy-ai/Infrastructure-reseau-multi-sites" class="btn-github" target="_blank">
+                    Voir la documentation technique →
+                </a>
+            </article>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 Arnaud DHUY - Portfolio Professionnel Technicien Systèmes et Réseaux
+    </footer>
+</body>
+</html>
