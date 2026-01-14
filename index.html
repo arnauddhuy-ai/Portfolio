@@ -123,7 +123,7 @@
         #projects h2 {
             margin-bottom: 35px;
             display: inline-block;
-            border-bottom: 3px solid var(--primary-color);
+            border-bottom: 3px solid var(--primary-color); /* Soulignement Vert */
             padding-bottom: 5px;
             color: white;
         }
@@ -142,9 +142,10 @@
             border-color: var(--primary-color);
         }
 
+        /* Titres de projets en BLANC */
         article h3 {
             margin-top: 0;
-            color: #ffffff;
+            color: #ffffff; /* Modification : Blanc pur */
             font-size: 1.4rem;
         }
 
@@ -153,6 +154,7 @@
             margin-bottom: 20px;
         }
 
+        /* Boutons de documentation en VERT */
         .btn-github {
             display: inline-block;
             color: var(--primary-color);
@@ -179,6 +181,7 @@
             margin-top: 40px;
         }
 
+        /* Responsive */
         @media (max-width: 600px) {
             .hero h1 { font-size: 2.2rem; }
             .links a { display: block; margin: 10px 0; }
@@ -199,7 +202,7 @@
             </p>
             <div class="links">
                 <a href="https://github.com/arnauddhuy-ai" target="_blank">Mon GitHub</a>
-                <a href="mailto:votre-email@exemple.com">Me Contacter</a>
+                <a href="mailto:ton-email@exemple.com">Me Contacter</a>
             </div>
         </div>
     </header>
@@ -226,7 +229,7 @@
                     Mise en place d’un environnement Active Directory complet pour 100 utilisateurs :
                     gestion centralisée, stratégies de groupe (GPO), partages réseau sécurisés.
                 </p>
-                <a href="projet-ad.html" class="btn-github">
+                <a href="https://github.com/arnauddhuy-ai/windows-server-2022-ad" class="btn-github" target="_blank">
                     Voir la documentation technique →
                 </a>
             </article>
@@ -237,7 +240,7 @@
                     Déploiement d’un serveur de fichiers Linux avec gestion fine des permissions, 
                     mise en place d'ACL et héritage des droits pour différents services.
                 </p>
-                <a href="projet-linux.html" class="btn-github">
+                <a href="https://github.com/arnauddhuy-ai/linux-espace-collaboratif" class="btn-github" target="_blank">
                     Voir la documentation technique →
                 </a>
             </article>
@@ -248,7 +251,7 @@
                     Conception et simulation d’un réseau segmenté via VLAN, mise en œuvre 
                     du routage inter-VLAN et sécurisation des flux (ACL).
                 </p>
-                <a href="projet-reseau.html" class="btn-github">
+                <a href="https://github.com/arnauddhuy-ai/infrastructure-reseau-multisite" class="btn-github" target="_blank">
                     Voir la documentation technique →
                 </a>
             </article>
