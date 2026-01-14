@@ -120,3 +120,149 @@
         }
 
         /* Section Projets */
+        #projects h2 {
+            margin-bottom: 35px;
+            display: inline-block;
+            border-bottom: 3px solid var(--primary-color); /* Soulignement Vert */
+            padding-bottom: 5px;
+            color: white;
+        }
+
+        article {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        article:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        /* Titres de projets en BLANC */
+        article h3 {
+            margin-top: 0;
+            color: #ffffff; /* Modification : Blanc pur */
+            font-size: 1.4rem;
+        }
+
+        article p {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        /* Boutons de documentation en VERT */
+        .btn-github {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border: 1px solid var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .btn-github:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+            .links a { display: block; margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Arnaud DHUY</h1>
+            <h2>Technicien Systèmes et Réseaux</h2>
+            <p>
+                Technicien systèmes et réseaux junior, passionné par
+                l'infrastructure IT, la sécurité et la gestion des environnements
+                Windows et Linux. Je conçois, déploie et documente des solutions
+                sécurisées et évolutives pour les PME.
+            </p>
+            <div class="links">
+                <a href="https://github.com/arnauddhuy-ai" target="_blank">Mon GitHub</a>
+                <a href="mailto:ton-email@exemple.com">Me Contacter</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="skills">
+            <h2>Compétences clés</h2>
+            <ul>
+                <li><strong>Windows Server 2022</strong> – AD, GPO, DNS, DHCP</li>
+                <li><strong>Linux (Debian/Ubuntu)</strong> – Gestion utilisateurs, ACL</li>
+                <li><strong>Réseaux</strong> – Adressage IP, VLAN, Routage Cisco</li>
+                <li><strong>Virtualisation</strong> – VMware Workstation, ESXi</li>
+                <li><strong>Sécurité</strong> – Segmentation, Gestion des droits</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projets Réalisés</h2>
+
+            <article>
+                <h3>Infrastructure PME – Windows Server 2022</h3>
+                <p>
+                    Mise en place d'un environnement Active Directory complet pour 100 utilisateurs :
+                    gestion centralisée, stratégies de groupe (GPO), partages réseau sécurisés.
+                </p>
+                <a href="https://github.com/arnauddhuy-ai/windows-server-2022-ad" class="btn-github" target="_blank">
+                    Voir la documentation technique →
+                </a>
+            </article>
+
+            <article>
+                <h3>Espace collaboratif Linux multi-groupes</h3>
+                <p>
+                    Déploiement d'un serveur de fichiers Linux avec gestion fine des permissions, 
+                    mise en place d'ACL et héritage des droits pour différents services.
+                </p>
+                <a href="https://github.com/arnauddhuy-ai/linux-espace-collaboratif" class="btn-github" target="_blank">
+                    Voir la documentation technique →
+                </a>
+            </article>
+
+            <article>
+                <h3>Infrastructure réseau multi-sites</h3>
+                <p>
+                    Conception et simulation d'un réseau segmenté via VLAN, mise en œuvre 
+                    du routage inter-VLAN et sécurisation des flux (ACL).
+                </p>
+                <a href="https://github.com/arnauddhuy-ai/infrastructure-reseau-multisite" class="btn-github" target="_blank">
+                    Voir la documentation technique →
+                </a>
+            </article>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Arnaud DHUY - Portfolio Professionnel Technicien Systèmes et Réseaux
+    </footer>
+
+</body>
+</html>
+
